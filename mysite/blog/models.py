@@ -4,6 +4,7 @@ from django.db import models
 class Blog(models.Model):
     name = models.CharField(max_length=120)
     created_on = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
 class Article(models.Model):
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
@@ -11,5 +12,6 @@ class Article(models.Model):
     title = models.CharField(max_length=120)
     body = models.TextField()
     draft = models.BooleanField(default=False)
+    objects = models.Manager()
 
 
