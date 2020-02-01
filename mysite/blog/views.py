@@ -13,3 +13,8 @@ def get_blogs(request):
         articles = Article.objects.filter(blog=blog)
         response += ','.join([article.title for article in articles])
     return HttpResponse(response)
+
+def get_counts(request):
+    
+    response = Blog.objects.count()
+    return HttpResponse("Total Blogs: %s" % response)
