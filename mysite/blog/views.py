@@ -1,20 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Blog,Article
+from blog.forms import BlogForm, ArticleForm
 # Create your views here.
 def index(request):
     return HttpResponse("Hello World")
 
 def get_blogs(request):
-    blogs=Blog.objects.all()
-    response = 'Blogs:'
-    for blog in blogs:
-        response += '<br \> {0}'.format(blog)
-        articles = Article.objects.filter(blog=blog)
-        response += ','.join([article.title for article in articles])
-    return HttpResponse(response)
+    blogs = Blog.objects.all()
+    context = {'blogs': blogs}
+    return render(request, 'blog/blogs.html', context)
 
-def get_counts(request):
-    
-    response = Blog.objects.count()
-    return HttpResponse("Total Blogs: %s" % response)
+def add_blog(request):
+    if request.method == 'POST':
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Blog created")
+        else:
+            context = {'form': form}
+            return render(
+                request,'add_blog.html', context)
+    context = {'form': BlogForm()}
+    return render(request, 'add_blog.html', context)
+            

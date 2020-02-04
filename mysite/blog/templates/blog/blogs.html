@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    {% if articles %}
+    <ul>
+      {% for article in articles %}
+      <li>{{ article.title | title }} - Blog:{{article.blog.name}}</li>
+      {% endfor %}
+      {% else %}
+      <p>No Blog articles are available.</p>
+    </ul>
+    {% endif %}
+  </body>
+</html>
