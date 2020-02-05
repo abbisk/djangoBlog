@@ -16,7 +16,6 @@ def add_blog(request, blog_id=None):
         blog = Blog.objects.get(id=blog_id)
     else:
         blog=Blog()
-
     if request.method == 'POST':
         form = BlogForm(request.POST,instance=blog)
         if form.is_valid():
@@ -24,8 +23,7 @@ def add_blog(request, blog_id=None):
             return get_blogs(request)
         else:
             context = {'form': form}
-            return render(
-                request,'add_blog.html', context)
+            return render(request,'add_blog.html', context)
     blog_form = BlogForm(instance=blog)
     context = {'form': blog_form, 'blog': blog}
     return render(request, 'add_blog.html', context)

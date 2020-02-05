@@ -5,7 +5,7 @@
     {% if blogs %}
     <ul>
       {% for blog in blogs %}
-      <li>{{blog.name}}<a href="/blogs/add_blog/{{blog.id}}"> [EDIT]</a></li>
+      <li>{{blog.name}}<a href='/blogs/add_blog/{{blog.id}}'> [Edit]</a></li>
       {% endfor %}
     {% else %}
     <p>No Blog articles are available </p>
