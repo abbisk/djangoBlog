@@ -1,9 +1,14 @@
-<!DOCTYPE html>
+{% load static %}
+<!<!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" type="text/css" 
+    href="{% static 'blog/css/base.css' %}">
+  </head>
   <body>
-    <h1>Edit Blog: </h1>
+    <h3>Edit Blog: </h3>
     {% if blogs %}
-    <ul>
+    <ul class="number">
       {% for blog in blogs %}
       <li>{{blog.name}}<a href='/blogs/add_blog/{{blog.id}}'> [Edit]</a></li>
       {% endfor %}
