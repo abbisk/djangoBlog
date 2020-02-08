@@ -4,8 +4,9 @@
   <head>
     <link rel="stylesheet" type="text/css" 
     href="{% static 'blog/css/base.css' %}">
+    <script src="{% static 'blog/js/welcome.js' %}"></script>
   </head>
-  <body>
+  <body onload="greet()"> <!---when the page has been loaded the greet function called -->
     <h3>Edit Blog: </h3>
     {% if blogs %}
     <ul class="number">
